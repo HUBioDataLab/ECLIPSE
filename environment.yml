@@ -1,0 +1,21 @@
+name: eclipse
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - torchaudio
+  - torchvision
+  - gfortran_osx-arm64
+  - clangxx_osx-arm64
+  - clang_osx-arm64
+  - pytorch==1.12.1
+  - spyder
+  - ipywidgets
+  - matplotlib
+  - plotly
+  - python-kaleido
+  - pandas=1.3.4
+  - pandarallel
+  - numpy
+  - openpyxl
+

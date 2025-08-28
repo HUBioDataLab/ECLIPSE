@@ -1,0 +1,79 @@
+model:
+  "fds_eclipse_dp_selformer":
+    lr: 0.0001
+    wd: 0
+    epochs: 20
+    tr_batch_size: 512
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 2
+
+  "fds_eclipse_dp_ecfp4":
+    lr: 0.0001
+    wd: 0
+    epochs: 20
+    tr_batch_size: 512
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 2
+
+  "fds_eclipse_fc_selformer":
+    lr: 0.0001
+    wd: 0.0001
+    epochs: 10
+    tr_batch_size: 1024
+    hidden_channels: 64
+    num_heads: 8                                                                
+    num_layers: 2
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.3
+
+  "fds_eclipse_fc_ecfp4":
+    lr: 0.0001
+    wd: 0.005
+    epochs: 10
+    tr_batch_size: 1024
+    hidden_channels: 64
+    num_heads: 8                                                                
+    num_layers: 2
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.1
+
+
+  "fds_dp_selformer":
+    lr: 0.00001
+    wd: 0
+    epochs: 20
+    tr_batch_size: 256
+    hidden_channels: 32                                                                
+
+
+  "fds_dp_ecfp4":
+    lr: 0.00001
+    wd: 0
+    epochs: 20
+    tr_batch_size: 256
+    hidden_channels: 128
+
+
+  "fds_fc_selformer":
+    lr: 0.0001
+    wd: 0.005
+    epochs: 40
+    tr_batch_size: 1024
+    hidden_channels: 64
+    coefficient: 8
+    fc_layers: 2
+    dropout: 0.3 
+
+  "fds_fc_ecfp4":
+    lr: 0.0001
+    wd: 0.005
+    epochs: 20
+    tr_batch_size: 1024
+    hidden_channels: 64
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.3

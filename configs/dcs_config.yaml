@@ -1,0 +1,79 @@
+model:
+  "dcs_eclipse_dp_selformer":
+    lr: 0.0001
+    wd: 0
+    epochs: 25
+    tr_batch_size: 512
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 3
+
+  "dcs_eclipse_dp_ecfp4":
+    lr: 0.0001
+    wd: 0
+    epochs: 15
+    tr_batch_size: 256
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 3
+
+  "dcs_eclipse_fc_selformer":
+    lr: 0.0001
+    wd: 0
+    epochs: 20
+    tr_batch_size: 512
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 3
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.1
+
+  "dcs_eclipse_fc_ecfp4":
+    lr: 0.00005
+    wd: 0.005
+    epochs: 20
+    tr_batch_size: 256
+    hidden_channels: 32
+    num_heads: 8                                                                
+    num_layers: 2
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.3
+
+
+  "dcs_dp_selformer":
+    lr: 0.00001
+    wd: 0.005
+    epochs: 50
+    tr_batch_size: 1024
+    hidden_channels: 256
+
+
+  "dcs_dp_ecfp4":
+    lr: 0.00001
+    wd: 0.005
+    epochs: 30
+    tr_batch_size: 1024
+    hidden_channels: 256
+
+
+  "dcs_fc_selformer":
+    lr: 0.00001
+    wd: 0.005
+    epochs: 30
+    tr_batch_size: 1024
+    hidden_channels: 256
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.1 
+
+  "dcs_fc_ecfp4":
+    lr: 0.00001
+    wd: 0.005
+    epochs: 30
+    tr_batch_size: 1024
+    hidden_channels: 256
+    coefficient: 8 
+    fc_layers: 2
+    dropout: 0.1

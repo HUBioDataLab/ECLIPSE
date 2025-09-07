@@ -21,7 +21,7 @@ data/
     └── crossbar-kg_selformer.pt
 ```
 
-**The integrated CROssBAR knowledge graph** objects can be downloaded from this [CROssBAR KG](https://drive.google.com/drive/folders/1vs5pERcFT9iOqPQSRA1segVGclRR178l?usp=sharing) link.
+**The integrated CROssBAR knowledge graph** objects can be downloaded from this [CROssBAR KG](https://drive.google.com/file/d/1AqVshFKkrNoEZstLILiLzuDeIqMkgpji/view?usp=sharing) link.
 
 Once downloaded, place the `crossbar_kg/` folder (with the .pt files inside) into the `data/` directory. This ensures that train.py and predict.py can access the graph data correctly.
 

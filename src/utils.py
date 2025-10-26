@@ -4,6 +4,7 @@ import numpy as np
 from scipy.stats import spearmanr, pearsonr
 from sklearn.preprocessing import binarize
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef
+import torch.nn.functional as F
 
 
 #----Load configuration from file or use defaults-----

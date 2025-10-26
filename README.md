@@ -104,7 +104,7 @@ To generate bioactivity value predictions using a trained ECLIPSE model, run the
 An example command:
 
 ```bash
-python predict.py -s dcs -pl dp -cr selformer -p P11309
+python predict.py -s dcs -pl dp -cr selformer -pid P11309
 ```
 **Arguments:**
 - `-s, --split`: Data split -> `fds` (fully_dissimilar_split), `dcs` (dissimilar_compound_split), or `rs` (random_split)

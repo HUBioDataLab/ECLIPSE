@@ -52,8 +52,7 @@ ECLIPSE/
 │
 ├── outputs/                 # Model outputs (predictions, performance scores etc.)
 │
-├── requirements.txt           # Python dependencies (pip-based setup)
-├── environment.yml            # Conda environment specification
+├── requirements.txt           # Python dependencies
 ├── workflow.png               # Workflow diagram of the ECLIPSE framework
 ├── README.md                  # Project documentation (this file)
 └── LICENSE                    # License information
@@ -68,14 +67,10 @@ cd ECLIPSE
 
 **2. Set up the environment**
 
-Option 1: Using conda (recommended)
+Create and activate a new Conda environment with Python 3.9, then install all required packages using `pip`:
 ```bash
-conda env create -f environment.yml
+conda create -n eclipse python=3.9
 conda activate eclipse
-```
-
-Option 2: Using pip
-```bash
 pip install -r requirements.txt
 ```
 

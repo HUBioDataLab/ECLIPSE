@@ -62,8 +62,9 @@ def get_model(model_name, config, graph, pred_layer, device):
 
 
 def predict_protein(model_name, protein_id, node_js, graph, model, output_dir):
-    if protein_id not in node_js:
-        raise ValueError(f"Protein ID {protein_id} not found in node json.")
+    available_protein_ids = [k for k in node_js if (k.startswith("H0Y") or (not k.startswith(("CHEMBL", "CID", "DB", "HP:", "hsa", "R-", "Orphanet:", "EFO:", "MONDO:", "H0"))))]
+    if protein_id not in available_protein_ids:
+        raise ValueError(f"Protein ID {protein_id} not found in available protein ids.")
     protein_idx = node_js[protein_id]
     compound_ids = [k for k in node_js if k.startswith(("CHEMBL", "CID"))]
     compound_indices = [node_js[cid] for cid in compound_ids]
@@ -82,8 +83,9 @@ def predict_protein(model_name, protein_id, node_js, graph, model, output_dir):
 
 
 def predict_compound(model_name, compound_id, node_js, graph, model, output_dir):
-    if compound_id not in node_js:
-        raise ValueError(f"Compound ID {compound_id} not found in node json.")
+    available_compound_ids = [k for k in node_js if k.startswith(("CHEMBL", "CID"))]
+    if compound_id not in available_compound_ids:
+        raise ValueError(f"Compound ID {compound_id} not found in available compound ids.")
     compound_idx = node_js[compound_id]
     protein_ids = [k for k in node_js if (k.startswith("H0Y") or (not k.startswith(("CHEMBL", "CID", "DB", "HP:", "hsa", "R-", "Orphanet:", "EFO:", "MONDO:", "H0"))))]
     protein_indices = [node_js[pid] for pid in protein_ids]
@@ -109,14 +111,16 @@ def predict_custom(model_name, csv_file, node_js, graph, model, output_dir):
     compound_ids = df["compound_id"].tolist()
     protein_ids = df["protein_id"].tolist()
 
+    available_protein_ids = [k for k in node_js if (k.startswith("H0Y") or (not k.startswith(("CHEMBL", "CID", "DB", "HP:", "hsa", "R-", "Orphanet:", "EFO:", "MONDO:", "H0"))))]
+    available_compound_ids = [k for k in node_js if k.startswith(("CHEMBL", "CID"))]
     if len(compound_ids) != len(protein_ids):
         raise ValueError("Size of compound_ids and protein_ids must be equal.")
     for cid in compound_ids:
-        if cid not in node_js:
-            raise ValueError(f"Compound ID {cid} not found in node index json file.")
+        if cid not in available_compound_ids:
+            raise ValueError(f"Compound ID {cid} not found in available compound ids.")
     for pid in protein_ids:
-        if pid not in node_js:
-            raise ValueError(f"Protein ID {pid} not found in node index json file.")
+        if pid not in available_protein_ids:
+            raise ValueError(f"Protein ID {pid} not found in available protein ids.")
     compound_indices = [node_js[cid] for cid in compound_ids]
     protein_indices = [node_js[pid] for pid in protein_ids]
     query_edge_index = torch.tensor([compound_indices, protein_indices], dtype=torch.long)

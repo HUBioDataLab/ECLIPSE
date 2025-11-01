@@ -51,7 +51,7 @@ class ECLIPSE(torch.nn.Module):
         #Method2: applying fully connected layers upon concatenation of learned protein and compound embeddings
         elif self.prediction_layer == "fc":
             input_dim = self.config["hidden_channels"] * 2  # Input dimension for the first FC layer
-            coeff = self.config["coeff"]  # Coefficient for hidden channels scaling
+            coeff = self.config["coefficient"]  # Coefficient for hidden channels scaling
             dropout = self.config["dropout"]  # Dropout rate for FC layers
 
             # Build FC layers dynamically

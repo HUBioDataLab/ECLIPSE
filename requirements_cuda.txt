@@ -1,0 +1,49 @@
+###############################################################################
+# ECLIPSE GPU Installation Template
+#
+# This file provides a template for installing ECLIPSE with GPU support.
+# It ensures that the correct versions of PyTorch, CUDA, and PyTorch Geometric
+# (PyG) libraries are installed together for compatibility.
+#
+# Instructions:
+# 1. Determine your system’s CUDA version by running `nvidia-smi`.
+# 2. Update the URLs below (the lines starting with `-f`) and the `torch`
+#    version tags to match your CUDA setup:
+#       - cu118 → for CUDA 11.8
+#       - cu121 → for CUDA 12.1
+# 3. Update the PyTorch Geometric (PyG) wheel link to match the Torch version:
+#       -f https://data.pyg.org/whl/torch-<TORCH_VERSION>+cuXXX.html
+# 4. If you change the Torch version or CUDA tag, you must also update:
+#       torch-geometric, torch-scatter, and torch-sparse
+#    to the compatible versions available in that PyG wheel index.
+
+###############################################################################
+
+# Example default: Torch 1.12.1 + CUDA 11.3
+
+# Use the official PyTorch CUDA 11.3 wheel index as an extra index
+--extra-index-url https://download.pytorch.org/whl/cu113
+
+# Use the PyG wheel index for torch==1.12.1+cu113
+-f https://data.pyg.org/whl/torch-1.12.1+cu113.html
+
+# Core libraries
+pandas==1.3.4
+numpy==1.23.5
+pyyaml==6.0
+torch==1.12.1+cu113
+torchvision==0.13.1+cu113
+torchaudio==0.12.1
+torch-sparse==0.6.16
+torch-scatter==2.1.0
+torch-geometric==2.2.0
+tqdm==4.64.0
+scikit-learn==1.1.2
+
+
+
+
+
+
+
+-

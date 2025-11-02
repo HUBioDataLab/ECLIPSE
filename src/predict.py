@@ -73,6 +73,9 @@ def predict_protein(model_name, protein_id, node_js, graph, model, output_dir):
 
     with torch.no_grad():
         preds = model(graph.x_dict, graph.edge_index_dict, graph[("compound", "Chembl", "protein")].query_edge_index)
+        if preds.is_cuda:
+            preds = preds.cpu()
+
     df = pd.DataFrame({
         "compound_id": compound_ids,
         "predicted_activity (-log[M])": preds.numpy().round(2)
@@ -95,6 +98,9 @@ def predict_compound(model_name, compound_id, node_js, graph, model, output_dir)
     
     with torch.no_grad():
         preds = model(graph.x_dict, graph.edge_index_dict, graph[("compound", "Chembl", "protein")].query_edge_index)
+        if preds.is_cuda:
+            preds = preds.cpu()
+
     df = pd.DataFrame({
         "protein_id": protein_ids,
         "predicted_activity (-log[M])": preds.numpy().round(2)
@@ -128,6 +134,8 @@ def predict_custom(model_name, csv_file, node_js, graph, model, output_dir):
 
     with torch.no_grad():
         preds = model(graph.x_dict, graph.edge_index_dict, graph[("compound", "Chembl", "protein")].query_edge_index)
+        if preds.is_cuda:
+            preds = preds.cpu()
     df = pd.DataFrame({
         "compound_id": compound_ids,
         "protein_id": protein_ids,
@@ -156,7 +164,8 @@ def main():
 
     node_js = load_node_json(args.compound_representation)
     model = get_model(model_name, config_path, crossbar_kg, args.prediction_layer, device)
-
+    model = model.to(device)
+    
     if args.protein_id:
         predict_protein(model_name, args.protein_id, node_js, crossbar_kg, model, args.output_dir)
     elif args.compound_id:

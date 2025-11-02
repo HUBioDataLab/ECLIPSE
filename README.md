@@ -52,7 +52,8 @@ ECLIPSE/
 │
 ├── outputs/                 # Model outputs (predictions, performance scores etc.)
 │
-├── requirements.txt           # Python dependencies
+├── requirements_cpu.txt           # Python dependencies for CPU version
+├── requirements_cuda.txt          # Python dependencies for CUDA version
 ├── workflow.png               # Workflow diagram of the ECLIPSE framework
 ├── README.md                  # Project documentation (this file)
 └── LICENSE                    # License information
@@ -71,8 +72,17 @@ Create and activate a new Conda environment with Python 3.9, then install all re
 ```bash
 conda create -n eclipse python=3.9
 conda activate eclipse
-pip install -r requirements.txt
 ```
+You can now install either the **CPU** or **CUDA** version of ECLIPSE dependencies:
+- CPU version:
+```bash
+pip install -r requirements_cpu.txt
+```
+- CUDA version:
+```bash
+pip install -r requirements_cuda.txt
+```
+⚠️ Reminder: Ensure that your local CUDA driver is compatible with the version of PyTorch defined in `requirements_cuda.txt`. If not, modify the corresponding lines in `requirements_cuda.txt` to match your installed CUDA version before running the command.
 
 ## ⚙️ Training the ECLIPSE Model
 

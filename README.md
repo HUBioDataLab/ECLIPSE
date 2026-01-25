@@ -131,7 +131,7 @@ Predictions will be saved as a CSV file in the specified `--output-dir`.
 
 
 ## 📄 License
-Copyright (C) 2025 HUBioDataLab
+Copyright (C) 2026 HUBioDataLab
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

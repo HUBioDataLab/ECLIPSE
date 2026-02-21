@@ -3,12 +3,12 @@
 **ECLIPSE (Exploration of Complex Ligand-Protein Interactions through Learning from Systems-level Heterogeneous Biomedical Knowledge Graphs)** is an AI-powered framework for predicting the bioactivity of compound–protein interactions (CPIs). By combining advanced graph modeling, comprehensive biomedical knowledge, and pre-trained embeddings, it uncovers hidden relationships within complex biological networks, offering a practical tool for researchers in drug discovery and computational biology.
 
 **ECLIPSE combines:**
-- **Large-scale heterogeneous biomedical knowledge graphs (KGs):** We built this integrated KG using our in-house [CROssBAR platform](https://crossbar.kansil.org/about.php), capturing entities, including genes, proteins, drugs, compounds, pathways, diseases, and phenotypes, and their multi-layered interactions.  
+- **Large-scale heterogeneous biomedical knowledge graphs (KGs):** We built an integrated KG capturing entities, including genes, proteins, drugs, compounds, pathways, diseases, and phenotypes, and their multi-layered interactions.  
 - **Feature embeddings from language and graph models:** Each biological entity is represented using learned embeddings, enabling richer context and better predictions.  
 - **Heterogeneous Graph Transformer (HGT):** Unlike standard GNNs, HGT leverages node and edge types with type-specific attention, effectively modeling complex and diverse relationships.
 
 <p align="center">
-  <img src="workflow.png" alt="The schematic representation of the ECLIPSE framework" width="800"/>
+  <img width="1745" height="995" alt="ECLIPSE_Figure1" src="https://github.com/user-attachments/assets/48118b36-379a-42fb-bc13-0a19d5c149c6" />
 </p>
 
 **The schematic representation of the ECLIPSE framework.** ECLIPSE is a systems-level framework for predicting compound–protein bioactivity. **The Integrated CROssBAR KG module** provides a multi-relational biomedical graph of proteins, compounds, drugs, pathways, phenotypes, and diseases, serving as the structural foundation for representation learning. From this graph, sampled subgraphs are processed in the **Node Projection on Sampled Subgraphs module**, where type-specific MLP layers project heterogeneous input node features into fixed-size representations. These embeddings are then passed into stacked **HGT Layers**, which apply heterogeneous mutual attention, message passing, and target-specific aggregation with residual connections to generate contextualized node embeddings. Finally, the **Prediction Layer** combines updated compound and protein embeddings, which are first refined through separate MLPs, either through vector concatenation with a fully connected network or via dot product, to predict bioactivity values.
@@ -123,9 +123,9 @@ python src/predict.py -s dcs -pl dp -cr selformer -pid P11309
 - `-o, --output-dir`: Output directory (default: `outputs/`)
 
 Use only **one** of the following options:
-- `-pid, --protein_id`: UniProt ID for protein-centric prediction (predict bioactivity values for the given protein against all compounds in the CROssBAR KG)
-- `-cid", --compound_id`: Compound ID for compound-centric prediction (predict bioactivity values for the given compound against all proteins in the CROssBAR KG)
-- `-c, --custom`: Path to a CSV file for a custom set (predict bioactivity values for the specified protein-compound pairs in the CROssBAR KG). The file must have two columns with headers: `compound_id`, `protein_id`
+- `-pid, --protein_id`: UniProt ID for protein-centric prediction (predict bioactivity values for the given protein against all compounds in the KG)
+- `-cid", --compound_id`: Compound ID for compound-centric prediction (predict bioactivity values for the given compound against all proteins in the KG)
+- `-c, --custom`: Path to a CSV file for a custom set (predict bioactivity values for the specified protein-compound pairs in the KG). The file must have two columns with headers: `compound_id`, `protein_id`
 
 Predictions will be saved as a CSV file in the specified `--output-dir`. 
 
